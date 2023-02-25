@@ -1,0 +1,13 @@
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  /* background-color: #3323C7; */
+  color: white;
+}
+
+ul{
+  gap:20px;
+}
+
