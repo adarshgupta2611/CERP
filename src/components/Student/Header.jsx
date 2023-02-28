@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./Header.module.css";
 
-const Header = () => {
-  
+const Header = (props) => {
+
   return (
     <div className={styles.header}>
       <h1>College ERP</h1>
@@ -24,8 +24,8 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="navbar-brand active text-light" aria-current="page" href="#">
-                  Admin Login
+                <a className="navbar-brand active text-light" aria-current="page" href="/admin">
+                 Admin Sign In
                 </a>
               </li>
               <span>|</span>

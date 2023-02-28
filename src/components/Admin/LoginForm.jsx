@@ -9,11 +9,11 @@ import {
   MDBInput
 } from "mdb-react-ui-kit";
 import { useSelector,useDispatch} from "react-redux";
-import { loginActions } from "../store/LoginStore";
+import { loginActions } from "../../store/LoginStore";
 import styles from "./LoginForm.module.css"
 
 
-function App() {
+function App(props) {
   const dispatch = useDispatch()
 
   const em = useSelector(state=>state.login.em);
@@ -30,7 +30,7 @@ function App() {
             style={{ borderRadius: "1rem", maxWidth: "500px" }}
           >
             <MDBCardBody className="p-5 w-100 d-flex flex-column">
-              <h2 className="fw-bold mb-2 text-center">Sign in</h2>
+              <h2 className="fw-bold mb-2 text-center">Admin Sign In</h2>
               <br></br>
               <MDBInput
                 wrapperClass="mb-4 w-100"
@@ -52,7 +52,6 @@ function App() {
               />
 
               <MDBBtn size="lg">Login</MDBBtn>
-              <a href="#" className={styles.signup}>New User? : Signup</a>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
