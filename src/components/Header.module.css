@@ -3,11 +3,26 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px 40px;
-  /* background-color: #3323C7; */
   color: white;
+  margin-top: 10px;
+}
+
+.header h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 55px;
+}
+
+.header span{
+  margin-right: 10px;
+}
+
+hr{
+  height: 12px;
+  border: 0;
+  box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
 }
 
 ul{
-  gap:20px;
+  gap:5px;
 }
 

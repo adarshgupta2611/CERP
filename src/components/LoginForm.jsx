@@ -6,14 +6,23 @@ import {
   MDBCol,
   MDBCard,
   MDBCardBody,
-  MDBInput,
-  MDBIcon,
-  MDBCheckbox,
+  MDBInput
 } from "mdb-react-ui-kit";
+import { useSelector,useDispatch} from "react-redux";
+import { loginActions } from "../store/LoginStore";
+import styles from "./LoginForm.module.css"
+
 
 function App() {
+  const dispatch = useDispatch()
+
+  const em = useSelector(state=>state.login.em);
+  const pwd = useSelector(state=>state.login.pwd);
+  const isValid = useSelector(state=>state.login.isValid);
+
   return (
     <MDBContainer fluid>
+      <hr></hr>
       <MDBRow className="d-flex justify-content-center align-items-center h-100">
         <MDBCol col="12">
           <MDBCard
@@ -22,16 +31,15 @@ function App() {
           >
             <MDBCardBody className="p-5 w-100 d-flex flex-column">
               <h2 className="fw-bold mb-2 text-center">Sign in</h2>
-              <p className="text-white-50 mb-3">
-                Please enter your login and password!
-              </p>
-
+              <br></br>
               <MDBInput
                 wrapperClass="mb-4 w-100"
                 label="Email address"
                 id="formControlLg"
                 type="email"
                 size="lg"
+                value={em}
+                onChange={(event)=>dispatch(loginActions.changeEm(event.target.value))}
               />
               <MDBInput
                 wrapperClass="mb-4 w-100"
@@ -39,10 +47,12 @@ function App() {
                 id="formControlLg"
                 type="password"
                 size="lg"
+                value={pwd}
+                onChange={(event)=>dispatch(loginActions.changePwd(event.target.value))}
               />
 
               <MDBBtn size="lg">Login</MDBBtn>
-
+              <a href="#" className={styles.signup}>New User? : Signup</a>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>

@@ -25,17 +25,19 @@ const Header = () => {
             <ul className="navbar-nav">
               <li className="nav-item">
                 <a className="navbar-brand active text-light" aria-current="page" href="#">
-                  Link1
+                  Admin Login
                 </a>
               </li>
+              <span>|</span>
               <li className="nav-item">
                 <a className="navbar-brand active text-light" href="#">
-                Link2
+                Contact Us
                 </a>
               </li>
+              <span>|</span>
               <li className="nav-item">
                 <a className="navbar-brand active text-light" href="#">
-                Link3
+                About Us
                 </a>
               </li>
             </ul>
