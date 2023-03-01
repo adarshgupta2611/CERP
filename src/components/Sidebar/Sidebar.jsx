@@ -10,8 +10,8 @@ import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
-    <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial',backgroundColor : "#508bfc" }}>
-      <CDBSidebar textColor="#fff" backgroundColor="#508bfc">
+    <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial'}}>
+      <CDBSidebar textColor="#fff" backgroundColor="-webkit-linear-gradient(left, #3931af, #00c6ff)">
         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
           <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
             Contents

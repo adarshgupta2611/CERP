@@ -21,7 +21,7 @@ function App(props) {
   const isValid = useSelector(state=>state.login.isValid);
 
   return (
-    <MDBContainer fluid>
+    <MDBContainer className={styles.outer} fluid>
       <hr></hr>
       <MDBRow className="d-flex justify-content-center align-items-center h-100">
         <MDBCol col="12">

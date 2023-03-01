@@ -37,12 +37,6 @@ const Header = (props) => {
               <span>|</span>
               <li className="nav-item">
                 <a className="navbar-brand active text-light" href="#">
-                About Us
-                </a>
-              </li>
-              <span>|</span>
-              <li className="nav-item">
-                <a className="navbar-brand active text-light" href="#">
                 Sign Out
                 </a>
               </li>

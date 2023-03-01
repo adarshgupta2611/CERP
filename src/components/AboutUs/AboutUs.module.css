@@ -1,0 +1,11 @@
+.outer{
+  display: flex;
+  flex-direction: column;
+}
+
+.about{
+  height: 100%;
+  width: 100%;
+  background-color: #eee;
+  flex: 1 0 51.5rem;
+}

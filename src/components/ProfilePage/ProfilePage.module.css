@@ -1,0 +1,16 @@
+.content{
+  background-color: white;
+  display: flex;
+  align-items: stretch;
+}
+
+.profileDiv{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  width: 50%;
+  flex:1;
+  margin: 0;
+  background-color: #eee;
+}
