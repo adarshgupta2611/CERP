@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import styles from "./Header.module.css";
 
 const Header = (props) => {
@@ -18,13 +18,13 @@ const Header = (props) => {
             aria-controls="navbarNav"
             aria-expanded="false"
             aria-label="Toggle navigation"
-            >
+          >
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="navbar-brand active text-light" aria-current="page" href="/student">
+                <a className="navbar-brand active text-light" aria-current="page" href="/">
                  Home
                 </a>
               </li>
@@ -38,12 +38,6 @@ const Header = (props) => {
               <li className="nav-item">
                 <a className="navbar-brand active text-light" href="#">
                 About Us
-                </a>
-              </li>
-              <span>|</span>
-              <li className="nav-item">
-                <a className="navbar-brand active text-light" href="#">
-                Sign Out
                 </a>
               </li>
             </ul>

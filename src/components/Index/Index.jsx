@@ -3,12 +3,13 @@ import AttendanceGraph from "../AttendanceGraph";
 import styles from "./Index.module.css"
 import Header from "./Header";
 import Sidebar from "../Sidebar/Sidebar";
+import Details from "./Details";
 
 const Index = ()=>{
   return (
     <Fragment>
       <Header></Header>
-      <hr></hr>
+      <hr style={{height : "1px"}}></hr>
       <div className={styles.content}>
         <Sidebar></Sidebar>
         <div className={styles.graphDiv}>

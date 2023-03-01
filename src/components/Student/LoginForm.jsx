@@ -52,7 +52,7 @@ function App(props) {
               />
 
               <MDBBtn size="lg">Login</MDBBtn>
-              <a href="#" className={styles.signup}>New User? : Signup</a>
+              <a href="/student/signup" className={styles.signup}>New User? : Signup</a>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
