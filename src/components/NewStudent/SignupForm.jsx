@@ -36,6 +36,7 @@ function SignupForm() {
     dispatch(SignupActions.changeGender(selectedGen));  
 
     const obj = {"firstName":firstName,"lastName":lastName,"address":address,"email":email,"password":password,"gender":gender,"courseId":courseId}
+   
     axios.post("http://localhost:8080/students/signup",obj).then((res)=>navigate.push("/")).catch((err)=>navigate.push("/student/signup"));
   }
 
