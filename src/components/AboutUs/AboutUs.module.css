@@ -4,8 +4,11 @@
 }
 
 .about{
-  height: 100%;
-  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 5rem 25rem;
+  gap: 10rem;
   background-color: #eee;
   flex: 1 0 51.5rem;
 }
