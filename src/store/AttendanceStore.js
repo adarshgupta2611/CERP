@@ -3,12 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
   datasets: [
-    // {
-    //   label: 'Absent',
-    //   backgroundColor: 'rgba(194, 116, 161, 0.5)',
-    //   borderColor: 'rgb(194, 116, 161)',
-    //   data: [65, 59, 90, 81, 56, 55, 40],
-    // },
+    {
+      label: 'Absent',
+      backgroundColor: 'rgba(194, 116, 161, 0.5)',
+      borderColor: 'rgb(194, 116, 161)',
+      data: [65, 59, 90, 81, 56, 55, 40],
+    },
     {
       label: 'Present',
       backgroundColor: 'rgba(71, 225, 167, 0.5)',
@@ -25,7 +25,10 @@ const AttendanceStore = createSlice({
     changeLabel(state,action){
       state.labels = action.payload;
     },
-    changeDatasets(state,action){
+    changeDatasetsData1(state,action){
+      state.datasets[1].data = action.payload;
+    },
+    changeDatasetsData0(state,action){
       state.datasets[0].data = action.payload;
     }
   }

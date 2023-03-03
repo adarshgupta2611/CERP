@@ -6,6 +6,7 @@ import Index from "./components/Index/Index";
 import AboutUs from "./components/AboutUs/AboutUs";
 import ProfilePage from "./components/ProfilePage/ProfilePage"
 import SignupTemplate from "./components/NewStudent/SignupTemplate"
+import Feedback from "./components/Feedback/Feedback";
 
 function App() {
   return (
@@ -14,9 +15,9 @@ function App() {
         <Route path="/" exact element={<StudentLoginForm/>} />
         <Route path="about" exact element={<AboutUs/>}/>
         <Route path="admin" exact element={<AdminLoginForm/>} />
-        <Route path="student/:id" exact element={<Index/>}>
-            <Route path="profile" exact element={<ProfilePage/>} />
-        </Route>
+        <Route path="student/:id" exact element={<Index/>}/>
+        <Route path="student/:id/profile" exact element={<ProfilePage/>} />
+        <Route path="student/:id/feedback" exact element={<Feedback/>}/>
         <Route path="signup" exact element={<SignupTemplate/>}></Route>
         
         

@@ -22,6 +22,11 @@ export default function ProfilePage() {
   const email = useSelector(state=>state.profile.email);
   const gender = useSelector(state=>state.profile.gender);
   const course = useSelector(state=>state.profile.course);
+  var imageLink = "https://www.pngitem.com/pimgs/m/71-716892_woman-avatar-icon-png-transparent-png.png"
+
+  if(gender==="Male"){
+    imageLink = "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp";
+  }
 
   return (
     <section style={{ backgroundColor: "#eee" }}>
@@ -31,14 +36,14 @@ export default function ProfilePage() {
             <MDBCard className="mb-4">
               <MDBCardBody className="text-center">
                 <MDBCardImage
-                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                  src={imageLink}
                   alt="avatar"
                   className="rounded-circle"
                   style={{ width: "150px" }}
                   fluid
                 />
                 {/* <p className="text-muted mb-1">Student</p> */}
-                <p className="text-muted mb-4">Student - PG-DAC</p>
+                <p className="text-muted mb-4">Student - {course}</p>
               </MDBCardBody>
             </MDBCard>
 
@@ -51,7 +56,7 @@ export default function ProfilePage() {
                       icon="github fa-lg"
                       style={{ color: "#333333" }}
                     />
-                    <MDBCardText>adarshgupta2611</MDBCardText>
+                    <MDBCardText>{firstName}{lastName}</MDBCardText>
                   </MDBListGroupItem>
                   <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
                     <MDBIcon
@@ -59,7 +64,7 @@ export default function ProfilePage() {
                       icon="twitter fa-lg"
                       style={{ color: "#55acee" }}
                     />
-                    <MDBCardText>@adarshgupta2611</MDBCardText>
+                    <MDBCardText>@{firstName}{lastName}</MDBCardText>
                   </MDBListGroupItem>
                 </MDBListGroup>
               </MDBCardBody>
@@ -135,10 +140,10 @@ export default function ProfilePage() {
                 <MDBCard className="mb-4 mb-md-0">
                   <MDBCardBody>
                     <MDBCardText className="mb-4">
-                      <span className="text-primary font-italic me-1">
-                        assigment
-                      </span>{" "}
-                      Project Status
+                      {/* <span className="text-primary font-italic me-1">
+                        
+                      </span>{" "} */}
+                      Result
                     </MDBCardText>
                     <MDBCardText
                       className="mb-1"

@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./Header.module.css";
-
 const Header = (props) => {
 
   return (
     <div className={styles.header}>
+      {/* <img style={{height: "20px"}} src="%PUBLIC_URL%/favicon.ico" alt="logo"></img> */}
       <h1>College ERP</h1>
 
     {/* BootStrap Navbar */}
