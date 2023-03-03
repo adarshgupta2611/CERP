@@ -7,17 +7,22 @@ import {
   MDBCardText,
   MDBCardBody,
   MDBCardImage,
-  MDBBtn,
-  MDBBreadcrumb,
-  MDBBreadcrumbItem,
   MDBProgress,
   MDBProgressBar,
   MDBIcon,
   MDBListGroup,
   MDBListGroupItem,
 } from "mdb-react-ui-kit";
+import { useSelector } from "react-redux";
 
 export default function ProfilePage() {
+  const firstName = useSelector(state=>state.profile.fname);
+  const lastName = useSelector(state=>state.profile.lname);
+  const address = useSelector(state=>state.profile.address);
+  const email = useSelector(state=>state.profile.email);
+  const gender = useSelector(state=>state.profile.gender);
+  const course = useSelector(state=>state.profile.course);
+
   return (
     <section style={{ backgroundColor: "#eee" }}>
       <MDBContainer className="py-5">
@@ -65,22 +70,33 @@ export default function ProfilePage() {
               <MDBCardBody>
                 <MDBRow>
                   <MDBCol sm="3">
-                    <MDBCardText>Full Name</MDBCardText>
+                    <MDBCardText>First Name</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">
-                      Adarsh Gupta
+                      {firstName}
                     </MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
                 <MDBRow>
                   <MDBCol sm="3">
+                    <MDBCardText>Last Name</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">
+                      {lastName}
+                    </MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr/>
+                <MDBRow>
+                  <MDBCol sm="3">
                     <MDBCardText>Email</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">
-                      example@example.com
+                      {email}
                     </MDBCardText>
                   </MDBCol>
                 </MDBRow>
@@ -90,7 +106,7 @@ export default function ProfilePage() {
                     <MDBCardText>Gender</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Male</MDBCardText>
+                    <MDBCardText className="text-muted">{gender}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -99,7 +115,7 @@ export default function ProfilePage() {
                     <MDBCardText>Course</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">PG-DAC</MDBCardText>
+                    <MDBCardText className="text-muted">{course}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -108,7 +124,7 @@ export default function ProfilePage() {
                     <MDBCardText>Address</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Pune</MDBCardText>
+                    <MDBCardText className="text-muted">{address}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
               </MDBCardBody>

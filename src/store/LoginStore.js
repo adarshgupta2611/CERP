@@ -1,17 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {em : "",pwd:"",isValid:false};
+const initialState = {em : "",pwd:""};
 
 const loginStore = createSlice({
   name:'login',
   initialState,
   reducers:{
-    loginValid(state){
-      state.isValid = true;
-    },
-    loginInvalid(state){
-      state.isValid = false;
-    },
     changeEm(state,action){
       state.em = action.payload;
     },

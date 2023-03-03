@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
-import Header from "./Header"
+import Header from "../Header/Header";
 import SignupForm from "./SignupForm";
 
 const SignupTemplate = ()=>{
   return (
     <Fragment>
-    <Header></Header>
+    <Header linkText="Home" hrefText="/"></Header>
     <SignupForm></SignupForm>
     </Fragment>
   )

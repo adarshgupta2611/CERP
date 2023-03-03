@@ -1,24 +1,37 @@
 import React from "react";
 import {
-  MDBBtn,
   MDBContainer,
   MDBRow,
   MDBCol,
   MDBCard,
   MDBCardBody,
-  MDBInput
+  MDBInput,
 } from "mdb-react-ui-kit";
-import { useSelector,useDispatch} from "react-redux";
+import { Button } from "react-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
 import { loginActions } from "../../store/LoginStore";
-import styles from "./LoginForm.module.css"
-
+import styles from "./LoginForm.module.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function App(props) {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const em = useSelector(state=>state.login.em);
-  const pwd = useSelector(state=>state.login.pwd);
-  const isValid = useSelector(state=>state.login.isValid);
+  const em = useSelector((state) => state.login.em);
+  const pwd = useSelector((state) => state.login.pwd);
+ 
+  const handleClick = async ()=>{
+    try {
+    const objSend = {email : em, password: pwd};
+    const response  = await axios.post("http://localhost:8080/students/signin",objSend);
+    navigate(`/student/${response.data}`)
+    } catch (error) {
+      console.error(error);
+    }
+    
+    
+  }
 
   return (
     <MDBContainer className={styles.outer} fluid>
@@ -35,24 +48,30 @@ function App(props) {
               <MDBInput
                 wrapperClass="mb-4 w-100"
                 label="Email address"
-                id="formControlLg"
                 type="email"
                 size="lg"
                 value={em}
-                onChange={(event)=>dispatch(loginActions.changeEm(event.target.value))}
+                onChange={(event) =>
+                  dispatch(loginActions.changeEm(event.target.value))
+                }
               />
               <MDBInput
                 wrapperClass="mb-4 w-100"
                 label="Password"
-                id="formControlLg"
                 type="password"
                 size="lg"
                 value={pwd}
-                onChange={(event)=>dispatch(loginActions.changePwd(event.target.value))}
+                onChange={(event) =>
+                  dispatch(loginActions.changePwd(event.target.value))
+                }
               />
 
-              <MDBBtn size="lg">Login</MDBBtn>
-              <a href="/signup" className={styles.signup}>New User? : Signup</a>
+              <Button onClick={handleClick} variant="primary" size="lg">
+                Login
+              </Button>
+              <a href="/signup" className={styles.signup}>
+                New User? : Signup
+              </a>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>

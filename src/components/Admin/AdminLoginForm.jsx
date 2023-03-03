@@ -1,13 +1,13 @@
 import React from "react";
 import { Fragment } from "react";
-import Header from "./Header"
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer"
 import LoginForm from "./LoginForm"
-import Footer from "./Footer"
 
 const AdminLoginForm = ()=>{
   return(
   <Fragment>
-    <Header></Header>
+    <Header linkText="Student Login" hrefText="/"></Header>
     <LoginForm></LoginForm>
     <Footer></Footer>
   </Fragment>

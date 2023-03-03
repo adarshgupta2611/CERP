@@ -7,8 +7,11 @@ import {
   CDBSidebarMenuItem,
 } from 'cdbreact';
 import { NavLink } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-const Sidebar = () => {
+const Sidebar = (props) => {
+  const param = useParams();
+  const profileLink = "/student/" + param.id + "/profile";
   return (
     <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial'}}>
       <CDBSidebar textColor="#fff" backgroundColor="-webkit-linear-gradient(left, #3931af, #00c6ff)">
@@ -20,7 +23,7 @@ const Sidebar = () => {
 
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
-            <NavLink to="/" exact>
+            <NavLink to={`/student/${param.id}`} exact>
               <CDBSidebarMenuItem icon="columns">Dashboard</CDBSidebarMenuItem>
             </NavLink>
             <NavLink to="/tables" exact>
@@ -29,7 +32,7 @@ const Sidebar = () => {
             <NavLink to="/feedback" exact>
               <CDBSidebarMenuItem icon="user">Feedback</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink to="/student/profile/:id" exact>
+            <NavLink to={profileLink} exact>
               <CDBSidebarMenuItem icon="user">Profile page</CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>

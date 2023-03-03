@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import {
-  MDBBtn,
   MDBContainer,
   MDBRow,
   MDBCol,
@@ -28,7 +27,7 @@ function SignupForm() {
   const gender = useSelector(state=>state.signup.gender);
   const courseId = useSelector(state=>state.signup.courseId);
 
-  const handleClick = (e)=>{
+  const handleClick = async (e)=>{
     e.preventDefault();
     let selectedValueCS = $("#cs option:selected").val();
     dispatch(SignupActions.changeCourse(selectedValueCS));
@@ -37,7 +36,14 @@ function SignupForm() {
 
     const obj = {"firstName":firstName,"lastName":lastName,"address":address,"email":email,"password":password,"gender":gender,"courseId":courseId}
    
-    axios.post("http://localhost:8080/students/signup",obj).then((res)=>navigate("/")).catch((err)=>navigate("/student/signup"));
+    
+    try {
+      const response  = await axios.post("http://localhost:8080/students/signup",obj);
+      alert("Added Successfully");
+      navigate("/");
+    } catch (error) {
+      alert("Error in : " + error)
+    }
   }
 
   return (

@@ -24,14 +24,19 @@ const Header = (props) => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="navbar-brand active text-light" aria-current="page" href="/">
-                 Home
+                <a className="navbar-brand active text-light" aria-current="page" href={props.hrefText}>
+                 {props.linkText}
                 </a>
               </li>
               <span>|</span>
               <li className="nav-item">
-                <a className="navbar-brand active text-light" href="#">
+                <a className="navbar-brand active text-light" href="/about">
                 About Us
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="navbar-brand active text-light" aria-current="page" href={props.hrefText2}>
+                 {props.linkText2}
                 </a>
               </li>
             </ul>
