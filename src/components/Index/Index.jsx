@@ -3,26 +3,35 @@ import AttendanceGraph from "../AttendanceGraph/AttendanceGraph"
 import styles from "./Index.module.css";
 import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
-import {Outlet,Route, Routes} from "react-router-dom";
+import {Outlet} from "react-router-dom";
 import { useParams} from "react-router-dom";
 import axios from "axios";
 import { useDispatch,useSelector } from "react-redux";
 import { attendanceActions } from "../../store/AttendanceStore";
 import { profileActions } from "../../store/ProfileStore";
 import { loginActions } from "../../store/LoginStore";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
   const param = useParams();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const fname = useSelector((store)=>store.profile.fname)
   const lname = useSelector((store)=>store.profile.lname)
+  const isAuth = useSelector(store=>store.login.isAuth)
 
 
   useEffect(()=>{
-    if(localStorage.getItem("token")){
+
+    if(localStorage.getItem("token")!=null){
       dispatch(loginActions.changeIsAuthTrue())
     }
-
+    
+    if(localStorage.getItem("token")!==param.id){
+      alert("This Student is not authorized")
+      navigate("/")
+    }
+    
     async function helper(){
       const response  = await axios.get(`http://localhost:8080/attendance/${param.id}`);
       const data = response.data;
@@ -53,7 +62,7 @@ const Index = () => {
   return (
     <Fragment>
       <Outlet/>
-      <Header linkText="Home" hrefText={`/student/${param.id}`} linkText2="| Logout" hrefText2="/"></Header>
+      <Header linkText="Home" hrefText={`/student/${localStorage.getItem("token")}`} linkText2="| Logout" hrefText2="/"></Header>
       <hr style={{ height: "1px" }}></hr>
       <div className={styles.content}>
         <Sidebar id={param.id} feedbackLink={param.id}></Sidebar>

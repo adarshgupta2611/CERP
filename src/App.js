@@ -19,9 +19,9 @@ function App() {
         <Route path="about" exact element={<AboutUs/>}/>
         <Route path="admin" exact element={<AdminLoginForm/>} />
         <Route path="student/:id" exact element={<Index/>}/>
-        <Route path="student/:id/profile" exact element={<ProfilePage/>} />
+        <Route path="student/:id/profile" exact element={<ProtectedRoute isAuth={isAuth}>{<ProfilePage/>}</ProtectedRoute>} />
         <Route path="student/:id/feedback" exact element={<ProtectedRoute isAuth={isAuth}>{<Feedback/>}</ProtectedRoute>}/>
-        <Route path="signup" exact element={<ProtectedRoute isAuth={isAuth}>{<SignupTemplate/>}</ProtectedRoute>}></Route>
+        <Route path="signup" exact element={<SignupTemplate/>} />
         
         
         <Route path="*" element={<p style={{color : "white", fontSize : '40px'}}>Path not resolved</p>} />

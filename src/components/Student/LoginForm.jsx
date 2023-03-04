@@ -23,7 +23,7 @@ function App(props) {
   const pwd = useSelector((state) => state.login.pwd);
  
   useEffect(()=>{
-    if(localStorage.getItem("token")){
+    if(localStorage.getItem("token")!=null){
       dispatch(loginActions.changeIsAuthTrue())
       navigate(`/student/${localStorage.getItem("token")}`)
     }
@@ -39,7 +39,6 @@ function App(props) {
     const objSend = {email : em, password: pwd};
     const response  = await axios.post("http://localhost:8080/students/signin",objSend);
     localStorage.setItem("token",response.data)
-    console.log(localStorage.getItem("token"));
     dispatch(loginActions.changeIsAuthTrue())
     navigate(`/student/${response.data}`)
     } catch (error) {

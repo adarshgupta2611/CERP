@@ -3,12 +3,21 @@
   flex-direction: column;
 }
 
-.about{
+.full{
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 5rem 25rem;
-  gap: 10rem;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  align-items: center;
+  padding: 1rem 3rem 1rem;
+  gap: 2rem;
   background-color: #eee;
   flex: 1 0 51.5rem;
+}
+
+.about{
+  display: flex;
+  gap:2rem;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
 }
