@@ -13,6 +13,7 @@ import { loginActions } from "../../store/LoginStore";
 import styles from "./LoginForm.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function App(props) {
   const dispatch = useDispatch();
@@ -21,10 +22,25 @@ function App(props) {
   const em = useSelector((state) => state.login.em);
   const pwd = useSelector((state) => state.login.pwd);
  
+  useEffect(()=>{
+    if(localStorage.getItem("token")){
+      dispatch(loginActions.changeIsAuthTrue())
+      navigate(`/student/${localStorage.getItem("token")}`)
+    }
+  },[])
+
   const handleClick = async ()=>{
+    if(localStorage.getItem("token")){
+      dispatch(loginActions.changeIsAuthTrue())
+      navigate(`/student/${localStorage.getItem("token")}`)
+    }
+
     try {
     const objSend = {email : em, password: pwd};
     const response  = await axios.post("http://localhost:8080/students/signin",objSend);
+    localStorage.setItem("token",response.data)
+    console.log(localStorage.getItem("token"));
+    dispatch(loginActions.changeIsAuthTrue())
     navigate(`/student/${response.data}`)
     } catch (error) {
       console.error(error);

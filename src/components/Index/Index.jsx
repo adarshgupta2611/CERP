@@ -9,7 +9,7 @@ import axios from "axios";
 import { useDispatch,useSelector } from "react-redux";
 import { attendanceActions } from "../../store/AttendanceStore";
 import { profileActions } from "../../store/ProfileStore";
-import ProfilePage from "../ProfilePage/ProfilePage";
+import { loginActions } from "../../store/LoginStore";
 
 const Index = () => {
   const param = useParams();
@@ -19,6 +19,10 @@ const Index = () => {
 
 
   useEffect(()=>{
+    if(localStorage.getItem("token")){
+      dispatch(loginActions.changeIsAuthTrue())
+    }
+
     async function helper(){
       const response  = await axios.get(`http://localhost:8080/attendance/${param.id}`);
       const data = response.data;

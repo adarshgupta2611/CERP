@@ -16,7 +16,7 @@ const Sidebar = (props) => {
     <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial'}}>
       <CDBSidebar textColor="#fff" backgroundColor="-webkit-linear-gradient(left, #3931af, #00c6ff)">
         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
-          <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
+          <a href={`/student/${param.id}`} className="text-decoration-none" style={{ color: 'inherit' }}>
             Contents
           </a>
         </CDBSidebarHeader>

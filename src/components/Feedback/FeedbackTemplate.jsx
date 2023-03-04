@@ -2,8 +2,9 @@ import React, { Fragment } from "react";
 import { Card } from "react-bootstrap";
 
 const FeedbackTemplate = (props)=>{
-  const handleClick=()=>{
+  const handleClick=(e)=>{
     prompt("Enter your rating for this course")
+    console.log(e.target.outerText);
   }
 
   return(

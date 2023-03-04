@@ -1,6 +1,13 @@
 import React from "react";
 import styles from "./Header.module.css";
+import { useNavigate } from "react-router-dom";
+
 const Header = (props) => {
+  const navigate = useNavigate();
+  const handleLogout = ()=>{
+    localStorage.removeItem("token")
+    navigate("/")
+  }
 
   return (
     <div className={styles.header}>
@@ -35,7 +42,7 @@ const Header = (props) => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="navbar-brand active text-light" aria-current="page" href={props.hrefText2}>
+                <a className="navbar-brand active text-light" aria-current="page" href={props.hrefText2} onClick={handleLogout}>
                  {props.linkText2}
                 </a>
               </li>

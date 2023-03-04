@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {em : "",pwd:""};
+const initialState = {em : "",pwd:"",isAuth:false};
 
 const loginStore = createSlice({
   name:'login',
@@ -11,6 +11,12 @@ const loginStore = createSlice({
     },
     changePwd(state,action){
       state.pwd = action.payload;
+    },
+    changeIsAuthFalse(state){
+      state.isAuth = false;
+    },
+    changeIsAuthTrue(state){
+      state.isAuth = true;
     }
   }
 });
