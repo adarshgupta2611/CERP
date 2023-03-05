@@ -1,0 +1,13 @@
+.content{
+  background-color: #eee;
+  display: flex;
+  align-items: flex-start;
+  padding: 20px 40px;
+  gap: 3rem;
+  height: 87vh;
+  flex: 1;
+}
+
+.card:hover{
+  border: 20px;
+}

@@ -15,7 +15,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-function App(props) {
+function LoginForm(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -23,22 +23,22 @@ function App(props) {
   const pwd = useSelector((state) => state.login.pwd);
  
   useEffect(()=>{
-    if(localStorage.getItem("token")!=null){
+    if(localStorage.getItem("studentToken")!=null){
       dispatch(loginActions.changeIsAuthTrue())
-      navigate(`/student/${localStorage.getItem("token")}`)
+      navigate(`/student/${localStorage.getItem("studentToken")}`)
     }
   },[])
 
   const handleClick = async ()=>{
-    if(localStorage.getItem("token")){
+    if(localStorage.getItem("studentToken")){
       dispatch(loginActions.changeIsAuthTrue())
-      navigate(`/student/${localStorage.getItem("token")}`)
+      navigate(`/student/${localStorage.getItem("studentToken")}`)
     }
 
     try {
     const objSend = {email : em, password: pwd};
     const response  = await axios.post("http://localhost:8080/students/signin",objSend);
-    localStorage.setItem("token",response.data)
+    localStorage.setItem("studentToken",response.data)
     dispatch(loginActions.changeIsAuthTrue())
     navigate(`/student/${response.data}`)
     } catch (error) {
@@ -95,4 +95,4 @@ function App(props) {
   );
 }
 
-export default App;
+export default LoginForm;

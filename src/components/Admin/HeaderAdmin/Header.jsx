@@ -2,16 +2,16 @@ import React from "react";
 import styles from "./Header.module.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginActions } from "../../store/LoginStore";
+import { adminLoginActions } from "../../../store/AdminLoginStore";
 
 const Header = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
   const handleLogout = ()=>{
-    dispatch(loginActions.changeIsAuthFalse())
-    localStorage.removeItem("studentToken")
-    navigate("/")
+    dispatch(adminLoginActions.changeIsAuthFalse())
+    localStorage.removeItem("adminToken")
+    navigate("/admin")
   }
 
   return (

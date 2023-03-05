@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  MDBBtn,
   MDBContainer,
   MDBRow,
   MDBCol,
@@ -8,17 +7,47 @@ import {
   MDBCardBody,
   MDBInput
 } from "mdb-react-ui-kit";
+import { Button } from "react-bootstrap";
 import { useSelector,useDispatch} from "react-redux";
-import { loginActions } from "../../store/LoginStore";
-import styles from "./LoginForm.module.css"
+import { adminLoginActions } from "../../store/AdminLoginStore";
+import styles from "./LoginForm.module.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 
-function App(props) {
-  const dispatch = useDispatch()
+function LoginForm(props) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const em = useSelector(state=>state.login.em);
-  const pwd = useSelector(state=>state.login.pwd);
-  const isValid = useSelector(state=>state.login.isValid);
+  const em = useSelector((state) => state.adminLogin.em);
+  const pwd = useSelector((state) => state.adminLogin.pwd);
+ 
+  useEffect(()=>{
+    if(localStorage.getItem("adminToken")!=null){
+      dispatch(adminLoginActions.changeIsAuthTrue())
+      navigate(`/admin/${localStorage.getItem("adminToken")}`)
+    }
+  },[])
+
+  const handleAdminClick = async ()=>{
+    if(localStorage.getItem("adminToken")){
+      dispatch(adminLoginActions.changeIsAuthTrue())
+      navigate(`/admin/${localStorage.getItem("adminToken")}`)
+    }
+
+    try {
+    const objSend = {email : em, password: pwd};
+    const response  = await axios.post("http://localhost:8080/admins/signin",objSend);
+    localStorage.setItem("adminToken",response.data)
+    dispatch(adminLoginActions.changeIsAuthTrue())
+    navigate(`/admin/${response.data}`)
+    } catch (error) {
+      console.error(error);
+    }
+    
+    
+  }
 
   return (
     <MDBContainer fluid>
@@ -39,7 +68,7 @@ function App(props) {
                 type="email"
                 size="lg"
                 value={em}
-                onChange={(event)=>dispatch(loginActions.changeEm(event.target.value))}
+                onChange={(event)=>dispatch(adminLoginActions.changeEm(event.target.value))}
               />
               <MDBInput
                 wrapperClass="mb-4 w-100"
@@ -48,10 +77,12 @@ function App(props) {
                 type="password"
                 size="lg"
                 value={pwd}
-                onChange={(event)=>dispatch(loginActions.changePwd(event.target.value))}
+                onChange={(event)=>dispatch(adminLoginActions.changePwd(event.target.value))}
               />
 
-              <MDBBtn size="lg">Login</MDBBtn>
+              <Button onClick={handleAdminClick} variant="primary" size="lg">
+                Login
+              </Button>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
@@ -60,4 +91,4 @@ function App(props) {
   );
 }
 
-export default App;
+export default LoginForm;

@@ -1,0 +1,30 @@
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  color: white;
+  margin-top: 10px;
+  height: 13vh;
+}
+
+.header h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 55px;
+}
+
+.header span{
+  margin-right: 10px;
+}
+
+hr{
+  margin-top: 0;
+  height: 12px;
+  border: 0;
+  box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+}
+
+ul{
+  gap:5px;
+}
+

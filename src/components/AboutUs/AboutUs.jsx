@@ -51,11 +51,11 @@ The educational facilities are a combination of classroom as well as sports faci
         </div>
         <AboutUsTemplate
           title="Contact Us"
-          content="Centre for Development of Advanced Computing
-          Pune University Campus, Ganesh Khind
-          Pune - 411 007
-          Maharashtra (India)
-          Phone:+91-20-2570-4100, Fax: +91-20-2569 4004"          
+          content="For more information , you can contact us to our toll free number 
+          1800-1800-18
+          Or
+          write to us at
+          Enquiry@xyz.org.com"
         />
       </div>
     </div>

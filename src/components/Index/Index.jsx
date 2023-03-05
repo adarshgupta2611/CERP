@@ -23,11 +23,11 @@ const Index = () => {
 
   useEffect(()=>{
 
-    if(localStorage.getItem("token")!=null){
+    if(localStorage.getItem("studentToken")!=null){
       dispatch(loginActions.changeIsAuthTrue())
     }
     
-    if(localStorage.getItem("token")!==param.id){
+    if(localStorage.getItem("studentToken")!==param.id){
       alert("This Student is not authorized")
       navigate("/")
     }
@@ -62,7 +62,7 @@ const Index = () => {
   return (
     <Fragment>
       <Outlet/>
-      <Header linkText="Home" hrefText={`/student/${localStorage.getItem("token")}`} linkText2="| Logout" hrefText2="/"></Header>
+      <Header linkText="Home" hrefText={`/student/${localStorage.getItem("studentToken")}`} linkText2="| Logout" hrefText2="/"></Header>
       <hr style={{ height: "1px" }}></hr>
       <div className={styles.content}>
         <Sidebar id={param.id} feedbackLink={param.id}></Sidebar>
