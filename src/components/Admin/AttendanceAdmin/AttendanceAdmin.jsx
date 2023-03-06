@@ -3,7 +3,7 @@ import Header from "../HeaderAdmin/Header";
 import { useSelector } from "react-redux";
 import styles from "./AttendanceAdmin.module.css"
 import { Card } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { courseActions } from "../../../store/CourseStore";
@@ -11,7 +11,6 @@ import { courseActions } from "../../../store/CourseStore";
 const AttendanceAdmin = () => {
   const courses = useSelector((store)=>store.course.courseName)
 
-    const param = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -27,7 +26,7 @@ const AttendanceAdmin = () => {
       }
       dispatch(courseActions.changeCourseId(cid))
       dispatch(courseActions.changeCourseName(cName))
-      navigate(`/admin/${param.id}/attendance/${cn}`)
+      navigate(`${cn}`)
   }
   return (
     <Fragment>

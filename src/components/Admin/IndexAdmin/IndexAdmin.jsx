@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import { useParams, Outlet, useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./IndexAdmin.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { adminLoginActions } from "../../../store/AdminLoginStore";
 import Header from "../HeaderAdmin/Header";
 import { Card } from "react-bootstrap";
@@ -28,7 +28,16 @@ const IndexAdmin = () => {
 
   const handleFeedbackClick = async ()=>{
     const response = await axios.get("http://localhost:8080/admins/courses");
-    console.log(response.data);
+    const data = response.data;
+    const cid=[]
+    const courseName=[]
+    for(let i=0;i<data.length;i++){
+      cid.push(data[i].id)
+      courseName.push(data[i].courseName)
+    }
+    dispatch(courseActions.changeCourseId(cid))
+    dispatch(courseActions.changeCourseName(courseName))
+    navigate(`/admin/${param.id}/feedback`)
   }
 
   useEffect(() => {
@@ -40,7 +49,7 @@ const IndexAdmin = () => {
       alert("This Admin is not authorized");
       navigate("/admin");
     }
-  }, []);
+  }, [dispatch,navigate,param.id]);
 
   return (
     <Fragment>

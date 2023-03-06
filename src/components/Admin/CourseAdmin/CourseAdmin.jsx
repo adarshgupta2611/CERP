@@ -31,11 +31,11 @@ const CourseAdmin = () => {
     };
 
     helper();
-  }, []);
+  }, [dispatch,param.cn]);
 
   const handleSubjectClick = async (e) => {
     const sn= e.target.innerText
-    navigate(`/admin/${param.id}/attendance/${param.cn}/${sn}`)
+    navigate(`${sn}`)
   };
   return (
     <Fragment>

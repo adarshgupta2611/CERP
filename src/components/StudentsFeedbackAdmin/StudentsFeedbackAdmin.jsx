@@ -1,20 +1,13 @@
 import React, { Fragment, useEffect, useState } from "react";
-import Header from "../HeaderAdmin/Header";
-import styles from "./StudentsAttendanceAdmin.module.css";
+import Header from "../Admin/HeaderAdmin/Header";
+import styles from "./StudentsFeedbackAdmin.module.css";
 import {useParams } from "react-router-dom";
 import axios from "axios";
 import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/Button';
-import { useNavigate } from "react-router-dom";
 
-const StudentsAttendanceAdmin = () => {
+const StudentsFeedbackAdmin = () => {
   const param = useParams();
-  const [att,setAtt]= useState([])
-  const navigate = useNavigate();
-
-  const handleAddClick = ()=>{
-    navigate(`add`)
-  }
+  const [feed,setFeed]= useState([])
 
   useEffect(() => {
     const helper = async () => {
@@ -23,11 +16,11 @@ const StudentsAttendanceAdmin = () => {
       );
       const data = response.data;
       console.log(data);
-      setAtt(data);  
+      setFeed(data);  
     };
 
     helper();
-  }, []);
+  }, [param.sn]);
 
   return (
     <Fragment>
@@ -39,7 +32,6 @@ const StudentsAttendanceAdmin = () => {
       ></Header>
 
       <div className={styles.content}>
-      <Button onClick={handleAddClick} variant="outline-primary">Add Attendance</Button>
       <Table striped bordered hover>
       <thead>
         <tr>
@@ -47,7 +39,6 @@ const StudentsAttendanceAdmin = () => {
           <th>First Name</th>
           <th>Last Name</th>
           <th>Attendance</th>
-          <th>Update Attendance</th>
         </tr>
       </thead>
       <tbody>
@@ -58,14 +49,13 @@ const StudentsAttendanceAdmin = () => {
           <td>80</td>
           <td><Button variant="secondary">Mark Otto</Button></td>
         </tr> */}
-        {att.map((value,index)=>{
+        {feed.map((value,index)=>{
           return (
             <tr key={index}>
               <td>{value.student.id}</td>
               <td>{value.student.firstName}</td>
               <td>{value.student.lastName}</td>
               <td>{value.attendance}</td>
-              <td><Button id={value.student.id} variant="secondary">Mark {value.student.firstName} {value.student.lastName}</Button></td>
             </tr>
           )
         })}
@@ -76,4 +66,4 @@ const StudentsAttendanceAdmin = () => {
   );
 };
 
-export default StudentsAttendanceAdmin;
+export default StudentsFeedbackAdmin;

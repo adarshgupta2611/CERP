@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 import CourseAdmin from "./components/Admin/CourseAdmin/CourseAdmin"
 import StudentsAttendanceAdmin from "./components/Admin/StudentsAttendanceAdmin/StudentsAttendanceAdmin";
 import AddAttendanceAdmin from "./components/Admin/AddAttendanceAdmin/AddAttendanceAdmin";
+import StudentsFeedbackAdmin from "./components/StudentsFeedbackAdmin/StudentsFeedbackAdmin";
 
 function App() {
   const isAuth = useSelector(store=>store.login.isAuth);
@@ -26,8 +27,11 @@ function App() {
         <Route path="admin" exact element={<AdminLoginForm/>} />
         <Route path="admin/:id" exact element={<IndexAdmin/>} />
         <Route path="admin/:id/attendance" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<AttendanceAdmin/>}</ProtectedRoute>} />
+        <Route path="admin/:id/feedback" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<AttendanceAdmin/>}</ProtectedRoute>} />
         <Route path="admin/:id/attendance/:cn" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<CourseAdmin/>}</ProtectedRoute>} />
+        <Route path="admin/:id/feedback/:cn" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<CourseAdmin/>}</ProtectedRoute>} />
         <Route path="admin/:id/attendance/:cn/:sn" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<StudentsAttendanceAdmin/>}</ProtectedRoute>} />
+        <Route path="admin/:id/feedback/:cn/:sn" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<StudentsFeedbackAdmin/>}</ProtectedRoute>} />
         <Route path="admin/:id/attendance/:cn/:sn/add" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<AddAttendanceAdmin/>}</ProtectedRoute>} />
 
 

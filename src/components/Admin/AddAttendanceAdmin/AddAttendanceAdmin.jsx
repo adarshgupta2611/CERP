@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
 import Header from "../HeaderAdmin/Header";
-// import styles from "./AddAttendanceAdmin.module.css"
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
@@ -28,7 +27,7 @@ const AddAttendanceAdmin = () => {
 
       <div>
         <hr></hr>
-        <MDBContainer fluid>
+        <MDBContainer style={{maxWidth:"50%"}} fluid>
           <MDBRow className="justify-content-center align-items-center m-5">
             <MDBCard>
               <MDBCardBody className="px-4">
@@ -40,32 +39,20 @@ const AddAttendanceAdmin = () => {
                   <MDBCol md="6">
                     <MDBInput
                       wrapperClass="mb-4"
-                      label="First Name"
+                      label="Student Id"
                       size="lg"
                       id="form1"
-                      type="text"
-                      // value={firstName}
-                      // onChange={(event) =>
-                      //   dispatch(
-                      //     SignupActions.changeFname(event.target.value)
-                      //   )
-                      // }
+                      type="number"
                     />
                   </MDBCol>
 
                   <MDBCol md="6">
                     <MDBInput
                       wrapperClass="mb-4"
-                      label="Last Name"
+                      label="Attendance"
                       size="lg"
                       id="form2"
-                      type="text"
-                      // value={lastName}
-                      // onChange={(event) =>
-                      //   dispatch(
-                      //     SignupActions.changeLname(event.target.value)
-                      //   )
-                      // }
+                      type="number"
                     />
                   </MDBCol>
                 </MDBRow>
