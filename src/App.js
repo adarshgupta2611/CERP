@@ -7,6 +7,7 @@ import AboutUs from "./components/AboutUs/AboutUs";
 import ProfilePage from "./components/ProfilePage/ProfilePage"
 import SignupTemplate from "./components/NewStudent/SignupTemplate"
 import Feedback from "./components/Feedback/Feedback";
+import AddFeedback from "./components/AddFeedback/AddFeedback"
 import IndexAdmin from "./components/Admin/IndexAdmin/IndexAdmin";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute"
 import AttendanceAdmin from "./components/Admin/AttendanceAdmin/AttendanceAdmin";
@@ -14,7 +15,7 @@ import { useSelector } from "react-redux";
 import CourseAdmin from "./components/Admin/CourseAdmin/CourseAdmin"
 import StudentsAttendanceAdmin from "./components/Admin/StudentsAttendanceAdmin/StudentsAttendanceAdmin";
 import AddAttendanceAdmin from "./components/Admin/AddAttendanceAdmin/AddAttendanceAdmin";
-import StudentsFeedbackAdmin from "./components/StudentsFeedbackAdmin/StudentsFeedbackAdmin";
+import StudentsFeedbackAdmin from "./components/Admin/StudentsFeedbackAdmin/StudentsFeedbackAdmin";
 
 function App() {
   const isAuth = useSelector(store=>store.login.isAuth);
@@ -24,6 +25,8 @@ function App() {
       <Routes>
         <Route path="/" exact element={<StudentLoginForm/>} />
         <Route path="about" exact element={<AboutUs/>}/>
+
+        {/* Admin Routes */}
         <Route path="admin" exact element={<AdminLoginForm/>} />
         <Route path="admin/:id" exact element={<IndexAdmin/>} />
         <Route path="admin/:id/attendance" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<AttendanceAdmin/>}</ProtectedRoute>} />
@@ -40,6 +43,7 @@ function App() {
         <Route path="student/:id" exact element={<Index/>}/>
         <Route path="student/:id/profile" exact element={<ProtectedRoute isAuth={isAuth}>{<ProfilePage/>}</ProtectedRoute>} />
         <Route path="student/:id/feedback" exact element={<ProtectedRoute isAuth={isAuth}>{<Feedback/>}</ProtectedRoute>}/>
+        <Route path="student/:id/feedback/:sn" exact element={<ProtectedRoute isAuth={isAuth}>{<AddFeedback/>}</ProtectedRoute>}/>
         <Route path="signup" exact element={<SignupTemplate/>} />
         
         

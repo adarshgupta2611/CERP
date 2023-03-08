@@ -16,8 +16,8 @@ const Header = (props) => {
 
   return (
     <div className={styles.header}>
-      {/* <img style={{height: "20px"}} src="%PUBLIC_URL%/favicon.ico" alt="logo"></img> */}
-      <h1>College ERP</h1>
+      
+      <h1><img src={require('./logo.png')} /> College ERP</h1>
 
     {/* BootStrap Navbar */}
       <nav className="navbar navbar-expand-lg bg-body-tertiary">

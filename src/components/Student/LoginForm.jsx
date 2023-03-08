@@ -28,6 +28,11 @@ function LoginForm(props) {
       navigate(`/student/${localStorage.getItem("studentToken")}`)
     }
   },[])
+  const handleEnter = (event)=>{
+    if(event.nativeEvent.code==="Enter"){
+      handleClick();
+    }
+  }
 
   const handleClick = async ()=>{
     if(localStorage.getItem("studentToken")){
@@ -42,7 +47,7 @@ function LoginForm(props) {
     dispatch(loginActions.changeIsAuthTrue())
     navigate(`/student/${response.data}`)
     } catch (error) {
-      console.error(error);
+      alert("Login Failed, Please check your Username and Password")
     }
     
     
@@ -79,6 +84,7 @@ function LoginForm(props) {
                 onChange={(event) =>
                   dispatch(loginActions.changePwd(event.target.value))
                 }
+                onKeyDown={(event)=>{handleEnter(event)}}
               />
 
               <Button onClick={handleClick} variant="primary" size="lg">

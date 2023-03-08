@@ -16,18 +16,27 @@ const StudentsAttendanceAdmin = () => {
     navigate(`add`)
   }
 
+  const handleUpdateClick = async(e)=>{
+    const attendance = parseInt(prompt("Enter the updated attendance"))
+    try {
+      const response = await axios.post(`http://localhost:8080/attendance/${param.sn}/${e.target.id}`, {"attendance" : attendance})
+      console.log(response.data);
+    } catch (error) {
+      alert(error);
+    }
+  }
+
   useEffect(() => {
     const helper = async () => {
       const response = await axios.get(
-        `http://localhost:8080/admins/list/${param.sn}`
+        `http://localhost:8080/attendance/admins/${param.sn}`
       );
       const data = response.data;
-      console.log(data);
       setAtt(data);  
     };
 
     helper();
-  }, []);
+  }, [param.sn]);
 
   return (
     <Fragment>
@@ -65,7 +74,7 @@ const StudentsAttendanceAdmin = () => {
               <td>{value.student.firstName}</td>
               <td>{value.student.lastName}</td>
               <td>{value.attendance}</td>
-              <td><Button id={value.student.id} variant="secondary">Mark {value.student.firstName} {value.student.lastName}</Button></td>
+              <td><Button onClick={handleUpdateClick} id={value.student.id} variant="secondary">Mark {value.student.firstName} {value.student.lastName}</Button></td>
             </tr>
           )
         })}

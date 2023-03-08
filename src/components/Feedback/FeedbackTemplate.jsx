@@ -3,18 +3,15 @@ import { Card } from "react-bootstrap";
 import styles from "./FeedbackTemplate.module.css"
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const FeedbackTemplate = (props)=>{
   const param = useParams();
+  const navigate = useNavigate();
+
   const handleClick=async (e)=>{
-    const r = parseInt(prompt("Enter your rating for this course"));
-    const sub = e.target.outerText;
-    try {
-      const response = await axios.post(`http://localhost:8080/feedback/${param.id}/${sub}`,{"rating" : r});
-      alert("Rating Submitted Successfully")
-    } catch (error) {
-      alert("Error: " + error.message);
-    }
+    const sn = e.target.outerText;
+    navigate(`${sn}`);
     
 
   }

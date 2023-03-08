@@ -39,6 +39,7 @@ function SignupForm() {
     
     try {
       const response  = await axios.post("http://localhost:8080/students/signup",obj);
+      console.log(response.data);
       alert("Added Successfully");
       navigate("/");
     } catch (error) {

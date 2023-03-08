@@ -1,23 +1,39 @@
-.outer{
+/* .outer{
   display: flex;
-  flex-direction: column;
-}
+  flex-direction: row;
+} */
 
-.full{
+/* .full{
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   align-items: center;
   padding: 1rem 3rem 1rem;
   gap: 2rem;
   background-color: #eee;
-  flex: 1 0 51.5rem;
-}
+}  */
 
-.about{
+/* .about{
   display: flex;
   gap:2rem;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
+}  */
+
+.full{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  align-items: flex-start;
+  background-color: #eee;
+  height: calc(140vh );
+  padding: 2rem;
+  column-gap: 4rem;
+  row-gap: 2rem;
+}
+
+.contactUs{
+  grid-row: 2;
+  grid-column: 2;
+  background-color: #eee;
 }

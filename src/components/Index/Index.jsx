@@ -11,6 +11,7 @@ import { attendanceActions } from "../../store/AttendanceStore";
 import { profileActions } from "../../store/ProfileStore";
 import { loginActions } from "../../store/LoginStore";
 import { useNavigate } from "react-router-dom";
+import { Card } from "react-bootstrap";
 
 const Index = () => {
   const param = useParams();
@@ -67,8 +68,10 @@ const Index = () => {
       <div className={styles.content}>
         <Sidebar id={param.id} feedbackLink={param.id}></Sidebar>
         <div className={styles.graphDiv}>
-          <p>Hello {fname} {lname}</p>
-          <p>Here is Your Subject Wise Attendance Graph</p>
+          {/* <p>Hello {fname} {lname}, Here is Your Subject Wise Attendance Graph</p> */}
+          <Card style={{marginTop : "10px"}}>
+            <Card.Body style={{fontSize: "20px"}}>Hello {fname}, Here is Your Subject Wise Attendance Graph</Card.Body>
+          </Card>
           <AttendanceGraph></AttendanceGraph>
         </div>
       </div>

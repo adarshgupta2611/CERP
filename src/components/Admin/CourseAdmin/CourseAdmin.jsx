@@ -17,7 +17,7 @@ const CourseAdmin = () => {
   useEffect(() => {
     const helper = async () => {
       const response = await axios.get(
-        `http://localhost:8080/admins/${param.cn}`
+        `http://localhost:8080/admins/courses/${param.cn}`
       );
       const data = response.data;
       const sid = [];

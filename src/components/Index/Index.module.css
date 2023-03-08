@@ -9,6 +9,7 @@ hr{
 .content{
   background-color: white;
   display: flex;
+  padding-right: 5px;
   /* justify-content: space-between; */
 }
 
@@ -22,7 +23,7 @@ hr{
   gap: 0px;
 }
 
-.graphDiv p{
+/* .graphDiv p{
   font-size: 20px;
   margin-top: 10px;
-}
+} */

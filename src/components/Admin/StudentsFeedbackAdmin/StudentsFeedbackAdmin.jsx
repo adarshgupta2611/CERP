@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import Header from "../Admin/HeaderAdmin/Header";
+import Header from "../HeaderAdmin/Header";
 import styles from "./StudentsFeedbackAdmin.module.css";
 import {useParams } from "react-router-dom";
 import axios from "axios";
@@ -38,7 +38,7 @@ const StudentsFeedbackAdmin = () => {
           <th>Student Id</th>
           <th>First Name</th>
           <th>Last Name</th>
-          <th>Attendance</th>
+          <th>Feedback</th>
         </tr>
       </thead>
       <tbody>

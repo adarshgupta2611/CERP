@@ -30,6 +30,12 @@ function LoginForm(props) {
     }
   },[])
 
+  const handleEnter = (event)=>{
+    if(event.nativeEvent.code==="Enter"){
+      handleAdminClick();
+    }
+  }
+
   const handleAdminClick = async ()=>{
     if(localStorage.getItem("adminToken")){
       dispatch(adminLoginActions.changeIsAuthTrue())
@@ -43,7 +49,7 @@ function LoginForm(props) {
     dispatch(adminLoginActions.changeIsAuthTrue())
     navigate(`/admin/${response.data}`)
     } catch (error) {
-      console.error(error);
+      alert(error);
     }
     
     
@@ -78,6 +84,7 @@ function LoginForm(props) {
                 size="lg"
                 value={pwd}
                 onChange={(event)=>dispatch(adminLoginActions.changePwd(event.target.value))}
+                onKeyDown={(event)=>{handleEnter(event)}}
               />
 
               <Button onClick={handleAdminClick} variant="primary" size="lg">
