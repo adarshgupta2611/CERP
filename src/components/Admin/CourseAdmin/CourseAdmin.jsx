@@ -49,7 +49,7 @@ const CourseAdmin = () => {
       <div className={styles.content}>
         {subjects.map((value, index) => {
           return (
-            <Card
+            <Card key={index}
               className={`${styles.card}`}
               onClick={handleSubjectClick}
               style={{ maxWidth: "15rem", padding: "0 5px" }}

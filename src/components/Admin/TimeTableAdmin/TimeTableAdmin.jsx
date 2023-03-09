@@ -7,7 +7,7 @@ import { useState } from "react";
 const TimeTableAdmin = () => {
   const [localData,setLocalData] = useState({dataSource : [{
     EndTime : new Date(2023,2,9,6,0),
-    StartTime : new Date(2023,2,9,4,0),
+    StartTime : new Date(2023,2,9,4,30),
     Subject : "DSA",
     // IsReadonly : true,
   }]})

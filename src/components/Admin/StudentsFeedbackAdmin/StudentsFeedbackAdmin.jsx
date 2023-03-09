@@ -12,11 +12,11 @@ const StudentsFeedbackAdmin = () => {
   useEffect(() => {
     const helper = async () => {
       const response = await axios.get(
-        `http://localhost:8080/admins/list/${param.sn}`
+        `http://localhost:8080/feedback/${param.sn}`
       );
       const data = response.data;
       console.log(data);
-      setFeed(data);  
+      // setFeed(data);  
     };
 
     helper();

@@ -17,7 +17,7 @@ const Feedback = ()=>{
         <Sidebar></Sidebar>
         <div className={styles.feedbackDiv}>
           {subjects.map((value,index)=>{
-            return (<FeedbackTemplate content={value}></FeedbackTemplate>)
+            return (<Fragment key={index}><FeedbackTemplate content={value}></FeedbackTemplate></Fragment>)
           })}
         </div>
       </div>

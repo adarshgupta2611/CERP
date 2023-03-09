@@ -39,7 +39,6 @@ const Index = () => {
       const newLabel=[]
       const newData=[]
       const newDataAbsent=[]
-      console.log(data[0]);
       for(let i=0;i<data.length;i++){
         newLabel.push(data[i].subjectName);
         newData.push(data[i].attendance)
