@@ -26,6 +26,20 @@ const IndexAdmin = () => {
     navigate(`/admin/${param.id}/attendance`)
   }
 
+  const handleTimetableClick = async ()=>{
+    const response = await axios.get("http://localhost:8080/admins/courses");
+    const data = response.data;
+    const cid=[]
+    const courseName=[]
+    for(let i=0;i<data.length;i++){
+      cid.push(data[i].id)
+      courseName.push(data[i].courseName)
+    }
+    dispatch(courseActions.changeCourseId(cid))
+    dispatch(courseActions.changeCourseName(courseName))
+    navigate(`/admin/${param.id}/timetable`)
+  }
+
   const handleFeedbackClick = async ()=>{
     const response = await axios.get("http://localhost:8080/admins/courses");
     const data = response.data;
@@ -76,6 +90,14 @@ const IndexAdmin = () => {
           style={{ maxWidth: "15rem", padding: "0 5px" }}
         >
           <Card.Body style={{ fontSize: "20px" }}>Show Feedback</Card.Body>
+        </Card>
+
+        <Card
+          className={`${styles.card}`}
+          onClick={handleTimetableClick}
+          style={{ maxWidth: "15rem", padding: "0 5px" }}
+        >
+          <Card.Body style={{ fontSize: "20px" }}>Time Table Scheduler</Card.Body>
         </Card>
       </div>
     </Fragment>

@@ -16,6 +16,7 @@ import CourseAdmin from "./components/Admin/CourseAdmin/CourseAdmin"
 import StudentsAttendanceAdmin from "./components/Admin/StudentsAttendanceAdmin/StudentsAttendanceAdmin";
 import AddAttendanceAdmin from "./components/Admin/AddAttendanceAdmin/AddAttendanceAdmin";
 import StudentsFeedbackAdmin from "./components/Admin/StudentsFeedbackAdmin/StudentsFeedbackAdmin";
+import TimeTableAdmin from "./components/Admin/TimeTableAdmin/TimeTableAdmin";
 
 function App() {
   const isAuth = useSelector(store=>store.login.isAuth);
@@ -31,6 +32,8 @@ function App() {
         <Route path="admin/:id" exact element={<IndexAdmin/>} />
         <Route path="admin/:id/attendance" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<AttendanceAdmin/>}</ProtectedRoute>} />
         <Route path="admin/:id/feedback" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<AttendanceAdmin/>}</ProtectedRoute>} />
+        <Route path="admin/:id/timetable" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<AttendanceAdmin/>}</ProtectedRoute>}/>
+        <Route path="admin/:id/timetable/:cn" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<TimeTableAdmin/>}</ProtectedRoute>}/>
         <Route path="admin/:id/attendance/:cn" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<CourseAdmin/>}</ProtectedRoute>} />
         <Route path="admin/:id/feedback/:cn" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<CourseAdmin/>}</ProtectedRoute>} />
         <Route path="admin/:id/attendance/:cn/:sn" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<StudentsAttendanceAdmin/>}</ProtectedRoute>} />
