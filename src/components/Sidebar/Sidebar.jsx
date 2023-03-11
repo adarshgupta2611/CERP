@@ -26,7 +26,7 @@ const Sidebar = (props) => {
             <NavLink to={`/student/${param.id}`} exact>
               <CDBSidebarMenuItem icon="columns">Dashboard</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink to="/tables" exact>
+            <NavLink to={`/student/${param.id}/timetable`} exact>
               <CDBSidebarMenuItem icon="table">Time Tables</CDBSidebarMenuItem>
             </NavLink>
             <NavLink to={`/student/${param.id}/feedback`} exact>

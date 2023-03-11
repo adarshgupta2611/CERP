@@ -17,6 +17,7 @@ import StudentsAttendanceAdmin from "./components/Admin/StudentsAttendanceAdmin/
 import AddAttendanceAdmin from "./components/Admin/AddAttendanceAdmin/AddAttendanceAdmin";
 import StudentsFeedbackAdmin from "./components/Admin/StudentsFeedbackAdmin/StudentsFeedbackAdmin";
 import TimeTableAdmin from "./components/Admin/TimeTableAdmin/TimeTableAdmin";
+import TimeTableStudent from "./components/TimeTableStudent/TimeTableStudent.jsx"
 
 function App() {
   const isAuth = useSelector(store=>store.login.isAuth);
@@ -46,6 +47,7 @@ function App() {
         <Route path="student/:id" exact="true" element={<Index/>}/>
         <Route path="student/:id/profile" exact="true" element={<ProtectedRoute isAuth={isAuth}>{<ProfilePage/>}</ProtectedRoute>} />
         <Route path="student/:id/feedback" exact="true" element={<ProtectedRoute isAuth={isAuth}>{<Feedback/>}</ProtectedRoute>}/>
+        <Route path="student/:id/timetable" exact="true" element={<ProtectedRoute isAuth={isAuth}>{<TimeTableStudent/>}</ProtectedRoute>}/>
         <Route path="student/:id/feedback/:sn" exact="true" element={<ProtectedRoute isAuth={isAuth}>{<AddFeedback/>}</ProtectedRoute>}/>
         <Route path="signup" exact="true" element={<SignupTemplate/>} />
         

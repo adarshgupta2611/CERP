@@ -49,7 +49,7 @@ function LoginForm(props) {
     dispatch(adminLoginActions.changeIsAuthTrue())
     navigate(`/admin/${response.data}`)
     } catch (error) {
-      alert(error);
+      alert(error.message)
     }
     
     

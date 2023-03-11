@@ -33,15 +33,6 @@ const Index = () => {
       alert("This Student is not authorized")
       navigate("/")
     }
-
-    if (localStorage.getItem("adminToken") != null) {
-      dispatch(adminLoginActions.changeIsAuthTrue());
-    }
-
-    if (localStorage.getItem("adminToken") !== param.id) {
-      alert("This Admin is not authorized");
-      navigate("/admin");
-    }
     
     async function helper(){
       const response  = await axios.get(`http://localhost:8080/attendance/${param.id}`);

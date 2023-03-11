@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
 import Header from "../Header/Header";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -33,7 +33,7 @@ const AddFeedback = () => {
       alert("Feedback Submitted Successfully")
       navigate(`/student/${param.id}/feedback`);
     } catch (error) {
-      alert(error);
+      alert(error.response.data);
     }
   };
   return (
