@@ -15,7 +15,7 @@ const store = configureStore({
     profile : ProfileStore.reducer,
     adminLogin : adminLoginStore.reducer,
     course : courseStore.reducer,
-    subject : subjectStore.reducer
+    subject : subjectStore.reducer,
   }
 });
 

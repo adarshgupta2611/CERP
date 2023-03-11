@@ -40,7 +40,7 @@ const AttendanceAdmin = () => {
       <div className={styles.content}>
         
           {courses.map((value, index) => {
-            return (<Card
+            return (<Card key={index}
               className={`${styles.card}`}
               onClick={handleCourseClick}
               style={{ maxWidth: "15rem", padding: "0 5px" }}

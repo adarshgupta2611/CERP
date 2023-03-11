@@ -12,6 +12,7 @@ import { profileActions } from "../../store/ProfileStore";
 import { loginActions } from "../../store/LoginStore";
 import { useNavigate } from "react-router-dom";
 import { Card } from "react-bootstrap";
+import adminLoginActions from "../../store/AdminLoginStore"
 
 const Index = () => {
   const param = useParams();
@@ -31,6 +32,15 @@ const Index = () => {
     if(localStorage.getItem("studentToken")!==param.id){
       alert("This Student is not authorized")
       navigate("/")
+    }
+
+    if (localStorage.getItem("adminToken") != null) {
+      dispatch(adminLoginActions.changeIsAuthTrue());
+    }
+
+    if (localStorage.getItem("adminToken") !== param.id) {
+      alert("This Admin is not authorized");
+      navigate("/admin");
     }
     
     async function helper(){

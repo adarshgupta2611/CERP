@@ -14,6 +14,7 @@ import styles from "./LoginForm.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { adminLoginActions } from "../../store/AdminLoginStore";
 
 function LoginForm(props) {
   const dispatch = useDispatch();
@@ -26,6 +27,11 @@ function LoginForm(props) {
     if(localStorage.getItem("studentToken")!=null){
       dispatch(loginActions.changeIsAuthTrue())
       navigate(`/student/${localStorage.getItem("studentToken")}`)
+    }
+
+    if (localStorage.getItem("adminToken") != null) {
+      dispatch(adminLoginActions.changeIsAuthTrue());
+      navigate("/admin");
     }
   },[])
   const handleEnter = (event)=>{
