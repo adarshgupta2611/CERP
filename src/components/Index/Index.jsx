@@ -12,14 +12,13 @@ import { profileActions } from "../../store/ProfileStore";
 import { loginActions } from "../../store/LoginStore";
 import { useNavigate } from "react-router-dom";
 import { Card } from "react-bootstrap";
-import adminLoginActions from "../../store/AdminLoginStore"
 
 const Index = () => {
   const param = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const fname = useSelector((store)=>store.profile.fname)
-  const lname = useSelector((store)=>store.profile.lname)
+  const course = useSelector((store)=>store.profile.course)
   const isAuth = useSelector(store=>store.login.isAuth)
 
 
@@ -54,10 +53,12 @@ const Index = () => {
       dispatch(profileActions.changeEmail(data[0].email));
       dispatch(profileActions.changeGender(data[0].gender));
       dispatch(profileActions.changeCourse(data[0].course.courseName));
-
+      
     }
     helper();
 
+    
+    
   },[]);
 
   return (

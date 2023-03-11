@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { Card } from "react-bootstrap";
 import styles from "./FeedbackTemplate.module.css"
-import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -12,8 +11,6 @@ const FeedbackTemplate = (props)=>{
   const handleClick=async (e)=>{
     const sn = e.target.outerText;
     navigate(`${sn}`);
-    
-
   }
 
   return(

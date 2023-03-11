@@ -24,6 +24,7 @@ const TimeTableAdmin = () => {
 
   const param = useParams();
 
+  const [x,setX] = useState("");
   // let dataManager = new DataManager({
   //   url: "http://localhost:8080/Home/GetData", // 'controller/actions'
   //   crudUrl: "Home/UpdateData",
@@ -42,35 +43,49 @@ const TimeTableAdmin = () => {
       // This block is execute after view navigation
     }
     if (args.requestType === "eventCreated") {
-      // setLocalData((prev)=>{
-      //   return [...prev,{EndTime : args.addedRecords[0].EndTime,
-      //     StartTime : args.addedRecords[0].StartTime,
-      //     Subject : args.addedRecords[0].Subject}]
-      // })
+
       const startTimeData = new Date(args.addedRecords[0].StartTime.getTime() + 5.5*60*60*1000)
       const endTimeData = new Date(args.addedRecords[0].EndTime.getTime() + 5.5*60*60*1000)
 
       const obj = {startTime : startTimeData,endTime : endTimeData, location : args.addedRecords[0].Location, subjectName : args.addedRecords[0].Subject}
-      console.log(obj);
-      const response = axios.post(`http://localhost:8080/schedule/${param.cn}`,obj);
+      
+      try {
+        const response = axios.post(`http://localhost:8080/schedule/${param.cn}`,obj);
+        setX(response.data)
+      } catch (error) {
+        alert(error.response.data)
+      }
     }
+
+
     if (args.requestType === "eventChanged") {
       // This block is execute after an appointment change
       const startTimeData = new Date(args.changedRecords[0].StartTime.getTime() + 5.5*60*60*1000)
       const endTimeData = new Date(args.changedRecords[0].EndTime.getTime() + 5.5*60*60*1000)
 
-      const obj = {startTime : startTimeData,endTime : endTimeData,scheduleId : args.changedRecords[0].Id, location : args.changedRecords[0].Location, subjectName : args.changedRecords[0].Subject}
-      console.log(obj);
+      const obj = {startTime : startTimeData,endTime : endTimeData,id : args.changedRecords[0].Id, location : args.changedRecords[0].Location, subjectName : args.changedRecords[0].Subject}
+      try {
       const response = axios.put(`http://localhost:8080/schedule/${param.cn}`,obj);
+      setX(response.data)  
+      } catch (error) {
+        alert(error.response.data)
+      }
     }
+
+
     if (args.requestType === "eventRemoved") {
       // This block is execute after an appointment remove
       const startTimeData = new Date(args.deletedRecords[0].StartTime.getTime() + 5.5*60*60*1000)
       const endTimeData = new Date(args.deletedRecords[0].EndTime.getTime() + 5.5*60*60*1000)
 
-      const obj = {startTime : startTimeData,endTime : endTimeData,scheduleId : args.deletedRecords[0].Id, location : args.deletedRecords[0].Location, subjectName : args.deletedRecords[0].Subject}
-      console.log(obj);
-      const response = axios.delete(`http://localhost:8080/schedule/${param.cn}`,obj); 
+      const obj = {startTime : startTimeData,endTime : endTimeData,id : args.deletedRecords[0].Id, location : args.deletedRecords[0].Location, subjectName : args.deletedRecords[0].Subject}
+      
+      try {
+        const response = axios.delete(`http://localhost:8080/schedule/${param.cn}`,{data:obj}); 
+        setX(response.data)
+      } catch (error) {
+        alert(error.response.data)
+      }
     }
   };
 
@@ -91,11 +106,10 @@ const TimeTableAdmin = () => {
           Subject : data[i].subjectName})
       }
       setLocalData(tempLocalData)
-      console.log(localData)
     };
 
     helper();
-  },[])
+  },[param.cn,x])
 
   return (
     <Fragment>
