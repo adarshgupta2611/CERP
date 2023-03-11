@@ -17,10 +17,9 @@ const StudentsAttendanceAdmin = () => {
   }
 
   const handleUpdateClick = async(e)=>{
-    const attendance = parseInt(prompt("Enter the updated attendance"))
     try {
-      const response = await axios.post(`http://localhost:8080/attendance/${param.sn}/${e.target.id}`, {"attendance" : attendance})
-      console.log(response.data);
+      const attendance = parseInt(prompt("Enter the updated attendance"));
+      const response = await axios.patch(`http://localhost:8080/attendance/${param.sn}/${e.target.id}`,{"attendance" : attendance});
     } catch (error) {
       alert(error);
     }
@@ -36,7 +35,7 @@ const StudentsAttendanceAdmin = () => {
     };
 
     helper();
-  }, [param.sn]);
+  }, [param.sn,att]);
 
   return (
     <Fragment>

@@ -16,10 +16,17 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 
 const TimeTableAdmin = () => {
+<<<<<<< HEAD
   const [localData,setLocalData] = useState([{
     EndTime : new Date(2023,2,11,6,0),
     StartTime : new Date(2023,2,11,4,0),
     Subject : "DBMS"}
+=======
+  const [localData,setLocalData] = useState({dataSource : [{
+    EndTime : new Date(2023,2,9,6,0),
+    StartTime : new Date(2023,2,9,4,30),
+    Subject : "DSA",
+>>>>>>> c6a9dfb7e70bdbfe3d447df0e72d04eee3d33c6e
     // IsReadonly : true,
     ,{
       EndTime : new Date(2023,2,10,6,0),

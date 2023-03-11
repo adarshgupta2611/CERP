@@ -28,26 +28,26 @@ function App() {
         <Route path="about" exact element={<AboutUs/>}/>
 
         {/* Admin Routes */}
-        <Route path="admin" exact element={<AdminLoginForm/>} />
-        <Route path="admin/:id" exact element={<IndexAdmin/>} />
-        <Route path="admin/:id/attendance" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<AttendanceAdmin/>}</ProtectedRoute>} />
-        <Route path="admin/:id/feedback" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<AttendanceAdmin/>}</ProtectedRoute>} />
-        <Route path="admin/:id/timetable" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<AttendanceAdmin/>}</ProtectedRoute>}/>
-        <Route path="admin/:id/timetable/:cn" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<TimeTableAdmin/>}</ProtectedRoute>}/>
-        <Route path="admin/:id/attendance/:cn" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<CourseAdmin/>}</ProtectedRoute>} />
-        <Route path="admin/:id/feedback/:cn" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<CourseAdmin/>}</ProtectedRoute>} />
-        <Route path="admin/:id/attendance/:cn/:sn" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<StudentsAttendanceAdmin/>}</ProtectedRoute>} />
-        <Route path="admin/:id/feedback/:cn/:sn" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<StudentsFeedbackAdmin/>}</ProtectedRoute>} />
-        <Route path="admin/:id/attendance/:cn/:sn/add" exact element={<ProtectedRoute isAuth={isAdminAuth}>{<AddAttendanceAdmin/>}</ProtectedRoute>} />
+        <Route path="admin" exact="true" element={<AdminLoginForm/>} />
+        <Route path="admin/:id" exact="true" element={<IndexAdmin/>} />
+        <Route path="admin/:id/attendance" exact="true" element={<ProtectedRoute isAuth={isAdminAuth}>{<AttendanceAdmin/>}</ProtectedRoute>} />
+        <Route path="admin/:id/feedback" exact="true" element={<ProtectedRoute isAuth={isAdminAuth}>{<AttendanceAdmin/>}</ProtectedRoute>} />
+        <Route path="admin/:id/timetable" exact="true" element={<ProtectedRoute isAuth={isAdminAuth}>{<AttendanceAdmin/>}</ProtectedRoute>}/>
+        <Route path="admin/:id/timetable/:cn" exact="true" element={<ProtectedRoute isAuth={isAdminAuth}>{<TimeTableAdmin/>}</ProtectedRoute>}/>
+        <Route path="admin/:id/attendance/:cn" exact="true" element={<ProtectedRoute isAuth={isAdminAuth}>{<CourseAdmin/>}</ProtectedRoute>} />
+        <Route path="admin/:id/feedback/:cn" exact="true" element={<ProtectedRoute isAuth={isAdminAuth}>{<CourseAdmin/>}</ProtectedRoute>} />
+        <Route path="admin/:id/attendance/:cn/:sn" exact="true" element={<ProtectedRoute isAuth={isAdminAuth}>{<StudentsAttendanceAdmin/>}</ProtectedRoute>} />
+        <Route path="admin/:id/feedback/:cn/:sn" exact="true" element={<ProtectedRoute isAuth={isAdminAuth}>{<StudentsFeedbackAdmin/>}</ProtectedRoute>} />
+        <Route path="admin/:id/attendance/:cn/:sn/add" exact="true" element={<ProtectedRoute isAuth={isAdminAuth}>{<AddAttendanceAdmin/>}</ProtectedRoute>} />
 
 
 
         {/* Student Routes */}
-        <Route path="student/:id" exact element={<Index/>}/>
-        <Route path="student/:id/profile" exact element={<ProtectedRoute isAuth={isAuth}>{<ProfilePage/>}</ProtectedRoute>} />
-        <Route path="student/:id/feedback" exact element={<ProtectedRoute isAuth={isAuth}>{<Feedback/>}</ProtectedRoute>}/>
-        <Route path="student/:id/feedback/:sn" exact element={<ProtectedRoute isAuth={isAuth}>{<AddFeedback/>}</ProtectedRoute>}/>
-        <Route path="signup" exact element={<SignupTemplate/>} />
+        <Route path="student/:id" exact="true" element={<Index/>}/>
+        <Route path="student/:id/profile" exact="true" element={<ProtectedRoute isAuth={isAuth}>{<ProfilePage/>}</ProtectedRoute>} />
+        <Route path="student/:id/feedback" exact="true" element={<ProtectedRoute isAuth={isAuth}>{<Feedback/>}</ProtectedRoute>}/>
+        <Route path="student/:id/feedback/:sn" exact="true" element={<ProtectedRoute isAuth={isAuth}>{<AddFeedback/>}</ProtectedRoute>}/>
+        <Route path="signup" exact="true" element={<SignupTemplate/>} />
         
         
         <Route path="*" element={<p style={{color : "white", fontSize : '40px'}}>Path not resolved</p>} />

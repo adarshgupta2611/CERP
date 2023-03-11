@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import Header from "../HeaderAdmin/Header";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import $ from 'jquery';
 import Button from "react-bootstrap/Button";
 import {
   MDBContainer,
@@ -11,10 +12,21 @@ import {
   MDBCardBody,
   MDBInput,
 } from "mdb-react-ui-kit";
+import { useNavigate } from "react-router-dom";
 
 const AddAttendanceAdmin = () => {
   const param = useParams();
-  const handleClick = () => {};
+  const navigate = useNavigate();
+
+  const handleClick = async() => {
+    try {
+      const obj = {"studentId": parseInt($("#form1").val()), "attendance" : parseInt($("#form2").val())}
+    const response   = await axios.post(`http://localhost:8080/attendance/${param.sn}`,obj);
+      navigate(`/admin/${param.id}/attendance/${param.cn}/${param.sn}`)
+    } catch (error) {
+      alert(error)
+    }
+  };
 
   return (
     <Fragment>

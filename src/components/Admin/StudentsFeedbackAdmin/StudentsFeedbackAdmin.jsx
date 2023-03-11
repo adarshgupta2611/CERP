@@ -12,7 +12,7 @@ const StudentsFeedbackAdmin = () => {
   useEffect(() => {
     const helper = async () => {
       const response = await axios.get(
-        `http://localhost:8080/admins/list/${param.sn}`
+        `http://localhost:8080/feedback/${param.sn}`
       );
       const data = response.data;
       console.log(data);
@@ -36,26 +36,25 @@ const StudentsFeedbackAdmin = () => {
       <thead>
         <tr>
           <th>Student Id</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Feedback</th>
+          <th>Knowledge</th>
+          <th>Communication</th>
+          <th>Punctuality</th>
+          <th>Teaching</th>
+          <th>Guidance</th>
+          <th>Suggestion</th>
         </tr>
       </thead>
       <tbody>
-        {/* <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>80</td>
-          <td><Button variant="secondary">Mark Otto</Button></td>
-        </tr> */}
         {feed.map((value,index)=>{
           return (
             <tr key={index}>
-              <td>{value.student.id}</td>
-              <td>{value.student.firstName}</td>
-              <td>{value.student.lastName}</td>
-              <td>{value.attendance}</td>
+              <td>{value.studentId}</td>
+              <td>{value.knowledge}</td>
+              <td>{value.communication}</td>
+              <td>{value.punctuality}</td>
+              <td>{value.teaching}</td>
+              <td>{value.guidance}</td>
+              <td>{value.suggestion}</td>
             </tr>
           )
         })}
