@@ -50,7 +50,6 @@ const Index = () => {
 
       const resp  = await axios.get(`http://localhost:8080/students/${param.id}`);
       const dataProfile = resp.data;
-      console.log(dataProfile)
 
       dispatch(profileActions.changeAddress(dataProfile.address));
       dispatch(profileActions.changeFname(dataProfile.firstName));

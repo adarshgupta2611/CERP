@@ -73,7 +73,7 @@ const StudentsAttendanceAdmin = () => {
               <td>{value.student.firstName}</td>
               <td>{value.student.lastName}</td>
               <td>{value.attendance}</td>
-              <td><Button onClick={handleUpdateClick} id={value.student.id} variant="secondary">Mark {value.student.firstName} {value.student.lastName}</Button></td>
+              <td><Button onClick={handleUpdateClick} id={value.student.id} variant="secondary">Update {value.student.firstName} {value.student.lastName}</Button></td>
             </tr>
           )
         })}

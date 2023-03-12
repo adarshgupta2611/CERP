@@ -4,8 +4,9 @@
   align-items: flex-start;
   padding: 20px 40px;
   gap: 3rem;
-  height: 87vh;
-  flex: 1;
+  height: 100vh;
+  background-color: #eee;
+  flex: 1 1 100vh;
 }
 
 .card:hover{
