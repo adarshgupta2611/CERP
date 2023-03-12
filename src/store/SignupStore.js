@@ -26,7 +26,7 @@ const SignupStore = createSlice({
     },
     changeGender(state,action){
       state.gender = action.payload;
-    },
+    }
   }
 });
 

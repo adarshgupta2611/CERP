@@ -19,22 +19,24 @@ import { useNavigate } from 'react-router-dom';
 function SignupForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const firstName = useSelector(state=>state.signup.firstName);
-  const lastName = useSelector(state=>state.signup.lastName);
-  const address = useSelector(state=>state.signup.address);
-  const email = useSelector(state=>state.signup.email);
-  const password = useSelector(state=>state.signup.password);
-  const gender = useSelector(state=>state.signup.gender);
-  const courseId = useSelector(state=>state.signup.courseId);
+  const firstName = useSelector(store=>store.signup.firstName);
+  const lastName = useSelector(store=>store.signup.lastName);
+  const address = useSelector(store=>store.signup.address);
+  const email = useSelector(store=>store.signup.email);
+  const password = useSelector(store=>store.signup.password);
+  const gender = useSelector(store=>store.signup.gender);
+  const courseId = useSelector(store=>store.signup.courseId);
 
   const handleClick = async (e)=>{
     e.preventDefault();
     let selectedValueCS = $("#cs option:selected").val();
-    dispatch(SignupActions.changeCourse(selectedValueCS));
     var selectedGen = $("input[name='gen']:checked").val();
-    dispatch(SignupActions.changeGender(selectedGen));  
 
-    const obj = {"firstName":firstName,"lastName":lastName,"address":address,"email":email,"password":password,"gender":gender,"courseId":courseId}
+    dispatch(SignupActions.changeCourse($("#cs option:selected").val()));
+    dispatch(SignupActions.changeGender(selectedGen));  
+    
+    const obj = {firstName:firstName,lastName:lastName,address:address,email:email,password:password,gender:selectedGen,courseId:selectedValueCS}
+    console.log(obj);
    
     
     try {

@@ -14,6 +14,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const TimeTableStudent = () => {
   const [localData,setLocalData] = useState([{Id:1000,
@@ -24,6 +25,7 @@ const TimeTableStudent = () => {
   IsReadonly:true}])
 
   const param = useParams();
+  const course = useSelector(store=>store.profile.course)
 
   // let dataManager = new DataManager({
   //   url: "http://localhost:8080/Home/GetData", // 'controller/actions'
@@ -34,7 +36,7 @@ const TimeTableStudent = () => {
 
   useEffect(()=>{
     const helper = async()=>{
-      const response = await axios.get(`http://localhost:8080/schedule/${param.cn}`);
+      const response = await axios.get(`http://localhost:8080/schedule/${course}`);
       const data = response.data;
       // console.log(data);
       // console.log(new Date(data[0].startTime))

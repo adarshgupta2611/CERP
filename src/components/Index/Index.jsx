@@ -47,12 +47,17 @@ const Index = () => {
       dispatch(attendanceActions.changeDatasetsData1(newData));
       dispatch(attendanceActions.changeDatasetsData0(newDataAbsent));
       dispatch(attendanceActions.changeLabel(newLabel));
-      dispatch(profileActions.changeAddress(data[0].address));
-      dispatch(profileActions.changeFname(data[0].firstName));
-      dispatch(profileActions.changeLname(data[0].lastName));
-      dispatch(profileActions.changeEmail(data[0].email));
-      dispatch(profileActions.changeGender(data[0].gender));
-      dispatch(profileActions.changeCourse(data[0].course.courseName));
+
+      const resp  = await axios.get(`http://localhost:8080/students/${param.id}`);
+      const dataProfile = resp.data;
+      console.log(dataProfile)
+
+      dispatch(profileActions.changeAddress(dataProfile.address));
+      dispatch(profileActions.changeFname(dataProfile.firstName));
+      dispatch(profileActions.changeLname(dataProfile.lastName));
+      dispatch(profileActions.changeEmail(dataProfile.email));
+      dispatch(profileActions.changeGender(dataProfile.gender));
+      dispatch(profileActions.changeCourse(dataProfile.course.courseName));
       
     }
     helper();
